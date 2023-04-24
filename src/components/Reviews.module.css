@@ -1,0 +1,20 @@
+.additionalInfo {
+  border-top: 2px solid #4e4e4e;
+  margin-top: 10px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.author {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.content {
+  margin-top: 10px;
+}

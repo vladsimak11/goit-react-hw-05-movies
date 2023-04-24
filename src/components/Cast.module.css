@@ -1,0 +1,11 @@
+.castList {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.additionalInfo {
+  border-top: 2px solid #4e4e4e;
+  margin-top: 10px;
+}

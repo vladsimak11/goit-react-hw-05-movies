@@ -16,3 +16,7 @@ h1, p, ul, li {
   margin: 0;
   padding: 0;
 }
+
+ul {
+  padding-left: 15px;
+}

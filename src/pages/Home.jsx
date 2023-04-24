@@ -7,7 +7,7 @@ export const Home = () => {
   const [moviesTrend, setMoviesTrend] = useState([]);
   
   useEffect(() => {
-    fetchTrending().then(data => setMoviesTrend(data.results))
+    fetchTrending().then(({results}) => setMoviesTrend(results))
   }, []);
   
   return (
