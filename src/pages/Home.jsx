@@ -7,17 +7,24 @@ export const Home = () => {
   const [moviesTrend, setMoviesTrend] = useState([]);
   
   useEffect(() => {
-    fetchTrending().then(({results}) => setMoviesTrend(results))
+    fetchTrending().then(({results}) => {
+      console.log(results);
+      return setMoviesTrend(results)
+    });
   }, []);
   
   return (
     <main className={css.container}>
-      <h1>Trending today</h1>
-      <ul className={css.list}>
+      <h1 className={css.trendHeader}>Trending today</h1>
+    
+      <ul className={css.trendList}>
         {
-          moviesTrend.map(({title, name, id}) => {
+          moviesTrend.map(({title, name, id, backdrop_path, poster_path}) => {
             return (
-              <li key={id}>
+              <li className={css.trendItem} key={id}>
+                <img className={css.trendImg}  src={`https://image.tmdb.org/t/p/original/${
+                backdrop_path
+              }`} alt="" />
                 <Link to={`movies/${id}`}>{title || name}</Link>
               </li>
             )
