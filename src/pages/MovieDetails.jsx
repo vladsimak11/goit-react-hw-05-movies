@@ -5,7 +5,7 @@ import { fetchMovieDetails } from '../services/fetchMovieDetails';
 import { ThreeDots } from '../components/Loader/Loader';
 import { BackLink } from 'components/BackLink/BackLink';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
@@ -84,3 +84,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

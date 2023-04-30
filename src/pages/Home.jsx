@@ -3,7 +3,7 @@ import {fetchTrending} from '../services/fetchTrending';
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export const Home = () => {
+const Home = () => {
   const [moviesTrend, setMoviesTrend] = useState([]);
   const location = useLocation();
 
@@ -35,3 +35,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

@@ -5,7 +5,7 @@ import css from './Reviews.module.css';
 import { ThreeDots } from '../Loader/Loader';
 import { NoReviews } from 'components/Error/NoReviews';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviewsList, setReviewsList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
@@ -43,3 +43,5 @@ export const Reviews = () => {
     </div>
   );
 };
+
+export default Reviews;

@@ -4,7 +4,7 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ThreeDots } from '../components/Loader/Loader';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchMovies, setSearchMovies] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [nameMovies, setNameMovie] = useState([]);
@@ -49,3 +49,5 @@ export const Movies = () => {
     </div>
   )
 }
+
+export default Movies;

@@ -4,7 +4,7 @@ import { fetchCast } from '../../services/fetchCast';
 import css from './Cast.module.css';
 import { ThreeDots } from '../Loader/Loader';
 
-export const Cast = () => {
+const Cast = () => {
   const [castList, setCastList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
@@ -45,3 +45,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast;

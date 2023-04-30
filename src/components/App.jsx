@@ -2,11 +2,13 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import css from './App.module.css';
 
-import { Home } from '../pages/Home';
-import { Movies } from '../pages/Movies';
-import { MovieDetails } from '../pages/MovieDetails';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
+import { lazy, Suspense } from "react";
+import { ThreeDots } from '../components/Loader/Loader';
+// import { Home } from '../pages/Home';
+// import { Movies } from '../pages/Movies';
+// import { MovieDetails } from '../pages/MovieDetails';
+// import { Cast } from './Cast/Cast';
+// import { Reviews } from './Reviews/Reviews';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -15,6 +17,13 @@ const StyledLink = styled(NavLink)`
     color: #5f9e3d;
   }
 `;
+
+const Home = lazy(() => import("../pages/Home"));
+const Movies = lazy(() => import("../pages/Movies"));
+const MovieDetails = lazy(() => import("../pages/MovieDetails"));
+
+const Cast = lazy(() => import("./Cast/Cast"));
+const Reviews = lazy(() => import("./Reviews/Reviews"));
 
 export const App = () => {
   return (
@@ -28,6 +37,7 @@ export const App = () => {
         </StyledLink>
       </nav>
 
+      <Suspense fallback={<ThreeDots />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -37,6 +47,7 @@ export const App = () => {
         </Route>
         <Route path="*" element={<Home />} />
       </Routes>
+      </Suspense>
     </div>
   );
 };
