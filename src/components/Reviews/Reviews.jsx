@@ -26,7 +26,7 @@ const Reviews = () => {
   return (
     <div className={css.additionalInfo}>
       {isLoading && <ThreeDots />}
-      {reviewsList == false && <NoReviews />}
+      {reviewsList === false && <NoReviews />}
       <ul className={css.reviews}>
         {reviewsList.map(({ author, content }) => {
           return (
