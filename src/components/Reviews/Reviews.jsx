@@ -14,7 +14,7 @@ export const Reviews = () => {
     setIsLoading(true);
     fetchReviews(movieId)
       .then(({ results }) => {
-        console.log(results)
+        // console.log(results);
         return setReviewsList(results);
       })
       .catch(error => console.log(error))
@@ -26,7 +26,7 @@ export const Reviews = () => {
   return (
     <div className={css.additionalInfo}>
       {isLoading && <ThreeDots />}
-      {reviewsList === [] && <NoReviews />}
+      {reviewsList == false && <NoReviews />}
       <ul className={css.reviews}>
         {reviewsList.map(({ author, content }) => {
           return (

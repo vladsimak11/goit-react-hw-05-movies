@@ -1,12 +1,15 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import css from './MovieDetails.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { fetchMovieDetails } from '../services/fetchMovieDetails';
 import { ThreeDots } from '../components/Loader/Loader';
+import { BackLink } from 'components/BackLink/BackLink';
 
 export const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? "/home");
 
   const { movieId } = useParams();
 
@@ -14,7 +17,7 @@ export const MovieDetails = () => {
     setIsLoading(true);
     fetchMovieDetails(movieId)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         return setMovieDetail(data);
       })
       .catch(error => console.log(error))
@@ -29,12 +32,13 @@ export const MovieDetails = () => {
     overview,
     release_date,
     backdrop_path,
-    poster_path,
+    profile_path,
     vote_average,
   } = movieDetail;
 
   return (
     <>
+      <BackLink to={backLinkHref.current}>Back to trending movie</BackLink>
       {isLoading && <ThreeDots />}
       <div className={css.container}>
         <div className={css.movieInfo}>
@@ -42,7 +46,7 @@ export const MovieDetails = () => {
             <img
               width="400"
               src={`https://image.tmdb.org/t/p/original/${
-                backdrop_path || poster_path
+                backdrop_path || profile_path
               }`}
               alt={title || name}
             />
