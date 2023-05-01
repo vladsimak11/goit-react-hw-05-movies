@@ -24,17 +24,25 @@ const Movies = () => {
       });
   }, [nameSearchMovies]);
 
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    setSearchMovies({name: e.target.elements.text.value});
+    e.target.elements.text.value = '';
+  }
+
   const visibleMovies = nameMovies.filter(({title}) =>
     title.toLowerCase().includes(nameSearchMovies.toLowerCase())
   );
-  console.log(visibleMovies)
+  console.log(searchMovies);
   return (
     <div className={css.container}>
-      <input
-        type="text"
-        value={nameSearchMovies}
-        onChange={e => setSearchMovies({ name: e.target.value })}
-      />
+      <form onSubmit={handleSumbit}>
+        <input
+          type="text"
+          name='text'         
+        />
+        <button type='submit' className={css.button}>Search</button>
+      </form>
 
       {isLoading && <ThreeDots />}
       <ul className={css.listMoives}>
